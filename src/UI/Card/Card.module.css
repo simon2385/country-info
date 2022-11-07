@@ -1,0 +1,10 @@
+@import '../../styles/vars.css';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-grey-light);
+  height: 100vh;
+  width: 80rem;
+  margin: 0 auto;
+}

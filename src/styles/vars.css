@@ -1,0 +1,14 @@
+:root {
+  --color-grey-light: rgb(207, 205, 205);
+  --color-grey-dark: rgb(40, 40, 40);
+  --color-grey-mid: rgb(151, 151, 151);
+
+  --color-green-primary: green;
+  --color-green-light: rgb(0, 255, 0);
+  --color-green-dark: rgb(0, 53, 0);
+
+  --color-red: rgb(194, 0, 0);
+  --font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  --background-gradient: linear-gradient(to bottom, var(--color-grey-dark), var(--color-green-dark));
+}
