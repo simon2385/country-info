@@ -1,13 +1,48 @@
 import React from 'react';
 
-export const CountryAppContext = React.createContext();
+const CountryAppContext = React.createContext({
+  enteredCountry: '',
+  isLoading: false,
+  hasError: false,
+  countryData: {},
+  isSubmited: false,
+  fetchCountryHandler: () => {},
+});
 
 const reducer = (state, action) => {
-  if (action.type === 'OK') console.log('ok')
+  switch (action.type) {
+    case 'INPUT-VALUE-ENTERED': {
+      return { ...state, enteredCountry: action.countryValue };
+    }
+    case 'LOADING-DATA': {
+      return { ...state, isLoading: true };
+    }
+    case 'FETCH-COUNTRY': {
+      //state.fetchCountryHandler(action.value);
+      return { ...state,isSubmited: true, enteredCountry: '' };
+    }
+    default: {
+      throw new Error(`Type d'action non supporté: ${action.type}`);
+    }
+  }
 };
 
+/* const fetchCountryHandler = async country => {
+  console.log(`fetching ${country}`);
+  const response = await fetch(
+    `https://restcountries.com/v3.1/name/${country}`
+  );
+  const [data] = await response.json();
+  return data
+}; */
+
 const CountryContextProvider = ({ children }) => {
-  const [state, dispatch] = React.useReducer(reducer, {});
+  const [state, dispatch] = React.useReducer(reducer, {
+    enteredCountry: '',
+    isLoading: false,
+    hasError: false,
+    //fetchCountryHandler,
+  });
 
   return (
     <CountryAppContext.Provider value={[state, dispatch]}>
@@ -16,4 +51,4 @@ const CountryContextProvider = ({ children }) => {
   );
 };
 
-export default CountryContextProvider;
+export { CountryContextProvider, CountryAppContext };
