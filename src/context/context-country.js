@@ -6,7 +6,7 @@ const CountryAppContext = React.createContext({
   hasError: false,
   countryData: {},
   isSubmited: false,
-  fetchCountryHandler: () => {},
+  showCountry: false,
 });
 
 const reducer = (state, action) => {
@@ -15,11 +15,31 @@ const reducer = (state, action) => {
       return { ...state, enteredCountry: action.countryValue };
     }
     case 'LOADING-DATA': {
-      return { ...state, isLoading: true };
+      return {
+        ...state,
+        isLoading: true,
+        hasError: false,
+        countryData: {},
+        showCountry: false,
+      };
+    }
+    case 'INPUT EMPTY': {
+      return;
     }
     case 'FETCH-COUNTRY': {
-      //state.fetchCountryHandler(action.value);
-      return { ...state,isSubmited: true, enteredCountry: '' };
+      return { ...state, isSubmited: true, enteredCountry: '' };
+    }
+    case 'FETCH UNSUCCES': {
+      return { ...state, hasError: true, isLoading: false, countryData: {} };
+    }
+    case 'FETCH SUCCES': {
+      return {
+        ...state,
+        hasError: false,
+        countryData: action.data,
+        showCountry: true,
+        isLoading: false,
+      };
     }
     default: {
       throw new Error(`Type d'action non supporté: ${action.type}`);
@@ -27,21 +47,14 @@ const reducer = (state, action) => {
   }
 };
 
-/* const fetchCountryHandler = async country => {
-  console.log(`fetching ${country}`);
-  const response = await fetch(
-    `https://restcountries.com/v3.1/name/${country}`
-  );
-  const [data] = await response.json();
-  return data
-}; */
-
 const CountryContextProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, {
     enteredCountry: '',
     isLoading: false,
     hasError: false,
-    //fetchCountryHandler,
+    countryData: {},
+    showCountry: false,
+    isSubmited: false,
   });
 
   return (

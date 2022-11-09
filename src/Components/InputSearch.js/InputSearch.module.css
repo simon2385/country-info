@@ -1,6 +1,8 @@
 .form__container {
   height: 11.5rem;
-  margin-top: 1.5rem;
+  margin-top: 4rem;
+  width: 100%;
+  margin-bottom: 4rem;
 }
 
 .form {
@@ -22,10 +24,10 @@
 }
 
 .input {
-  width: 90%;
+  width: 70%;
   border: none;
-  height: 3rem;
-  border-radius: 20px;
+  height: 4rem;
+  border-radius: 30px;
   padding-left: 1.5rem;
   font-size: 1.5rem;
   color: var(--color-grey-dark);
