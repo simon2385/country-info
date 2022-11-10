@@ -7,12 +7,20 @@ const CountryAppContext = React.createContext({
   countryData: {},
   isSubmited: false,
   showCountry: false,
+  message: '',
 });
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'INPUT-VALUE-ENTERED': {
-      return { ...state, enteredCountry: action.countryValue };
+      return {
+        ...state,
+        enteredCountry: action.countryValue,
+        hasError: false,
+        message: '',
+        isSubmited: false,
+        isLoading: false,
+      };
     }
     case 'LOADING-DATA': {
       return {
@@ -20,17 +28,38 @@ const reducer = (state, action) => {
         isLoading: true,
         hasError: false,
         countryData: {},
-        showCountry: false,
+        message: '',
+        isSubmited: false,
       };
     }
     case 'INPUT EMPTY': {
-      return;
+      return {
+        ...state,
+        hasError: true,
+        message: 'The input field is empty. Please enter a country',
+        countryData: {},
+        isSubmited: false,
+        isLoading: false,
+        showCountry: false
+      };
     }
     case 'FETCH-COUNTRY': {
-      return { ...state, isSubmited: true, enteredCountry: '' };
+      return {
+        ...state,
+        isSubmited: true,
+        enteredCountry: '',
+        hasError: false,
+      };
     }
     case 'FETCH UNSUCCES': {
-      return { ...state, hasError: true, isLoading: false, countryData: {} };
+      return {
+        ...state,
+        hasError: true,
+        isLoading: false,
+        countryData: {},
+        message: 'Country not Found',
+        showCountry: false,
+      };
     }
     case 'FETCH SUCCES': {
       return {
@@ -39,6 +68,7 @@ const reducer = (state, action) => {
         countryData: action.data,
         showCountry: true,
         isLoading: false,
+        message: '',
       };
     }
     default: {

@@ -1,4 +1,4 @@
-  import React from 'react';
+import React from 'react';
 
 import ButtonPrimary from '../../UI/buttons/ButtonPrimary/ButtonPrimary';
 import useCountryContext from '../../Hooks/useCountryContext';
@@ -32,6 +32,9 @@ const InputSearch = () => {
   const submitHandler = e => {
     e.preventDefault();
     dispatch({ type: 'LOADING-DATA' });
+
+    if (state.enteredCountry === '' && state.showCountry) return;
+
     if (state.enteredCountry === '') {
       //state.isSubmited = false;
       dispatch({ type: 'INPUT EMPTY' });

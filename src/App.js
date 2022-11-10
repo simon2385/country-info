@@ -1,6 +1,7 @@
 import Card from './UI/Card/Card';
 import Header from './layout/Header/Header';
 import Search from './Components/Search/Search';
+import Footer from './layout/Footer/Footer';
 import { CountryContextProvider } from './context/context-country';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Card>
         <Header />
         <Search />
+        <Footer />
       </Card>
     </CountryContextProvider>
   );
