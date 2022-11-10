@@ -40,7 +40,7 @@ const reducer = (state, action) => {
         countryData: {},
         isSubmited: false,
         isLoading: false,
-        showCountry: false
+        showCountry: false,
       };
     }
     case 'FETCH-COUNTRY': {
