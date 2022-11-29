@@ -18,7 +18,7 @@ const Search = () => {
       <SearchStateCard>
         {state?.enteredCountry !== '' && state?.isLoading && <Loading />}
         {state?.hasError && <ErrorMessage />}
-        {state?.showCountry && <CountryCard />}
+        {state?.showCountry && !state?.isLoading && <CountryCard />}
       </SearchStateCard>
     </section>
   );
