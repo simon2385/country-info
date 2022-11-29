@@ -27,17 +27,15 @@ const reducer = (state, action) => {
         ...state,
         isLoading: true,
         hasError: false,
-        countryData: {},
         message: '',
         isSubmited: false,
       };
     }
-    case 'INPUT EMPTY': {
+    case 'INPUT-EMPTY': {
       return {
         ...state,
         hasError: true,
         message: 'The input field is empty. Please enter a country',
-        countryData: {},
         isSubmited: false,
         isLoading: false,
         showCountry: false,
@@ -51,7 +49,7 @@ const reducer = (state, action) => {
         hasError: false,
       };
     }
-    case 'FETCH UNSUCCES': {
+    case 'FETCH-UNSUCCESS': {
       return {
         ...state,
         hasError: true,
@@ -61,7 +59,7 @@ const reducer = (state, action) => {
         showCountry: false,
       };
     }
-    case 'FETCH SUCCES': {
+    case 'FETCH-SUCCESS': {
       return {
         ...state,
         hasError: false,
@@ -72,7 +70,7 @@ const reducer = (state, action) => {
       };
     }
     default: {
-      throw new Error(`Type d'action non supporté: ${action.type}`);
+      throw new Error(`Action type not supported: ${action.type}`);
     }
   }
 };

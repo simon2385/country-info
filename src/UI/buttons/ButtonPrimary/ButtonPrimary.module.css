@@ -4,6 +4,6 @@
   border: none;
   border-radius: 30px;
   font-size: 1.6rem;
-  background-color: var(--color-green-dark);
+  background-color: var(--color-green-primary);
   color: var(--color-grey-light);
 }

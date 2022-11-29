@@ -18,14 +18,14 @@ const InputSearch = () => {
         `https://restcountries.com/v3.1/name/${country}`
       );
       if (!response.ok) {
-        dispatch({ type: 'FETCH UNSUCCES' });
+        dispatch({ type: 'FETCH-UNSUCCESS' });
       }
       if (response.ok) {
         const [data] = await response.json();
-        dispatch({ type: 'FETCH SUCCES', data: data });
+        dispatch({ type: 'FETCH-SUCCESS', data: data });
       }
     } catch (error) {
-      console.error(`We have an error ${error} try agains`);
+      console.error(`We have an error ${error} try again`);
     }
   };
 
@@ -37,20 +37,18 @@ const InputSearch = () => {
 
     if (state.enteredCountry === '') {
       //state.isSubmited = false;
-      dispatch({ type: 'INPUT EMPTY' });
+      dispatch({ type: 'INPUT-EMPTY' });
       return;
     }
-    dispatch({ type: 'FETCH-COUNTRY', value: state.enteredCountry });
+    dispatch({ type: 'FETCH-COUNTRY' });
 
     onFetchCountry(state.enteredCountry);
     console.log('submited');
   };
 
-  console.log(state);
-
   return (
-    <div className={classes['form__container']} onSubmit={submitHandler}>
-      <form className={classes.form}>
+    <div className={classes['form__container']}>
+      <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes['input__box']}>
           <input
             maxLength="38"
