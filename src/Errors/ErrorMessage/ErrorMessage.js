@@ -8,7 +8,7 @@ const ErrorMessage = () => {
   const [state] = useCountryContext();
 
   return (
-    <div className={classes['error-message__container']}>
+    <div data-testid="errorMessage" className={classes['error-message__container']}>
       <h2 className={classes['error-message']}>{state.message}</h2>
     </div>
   );

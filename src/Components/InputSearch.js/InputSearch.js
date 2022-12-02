@@ -17,6 +17,8 @@ const InputSearch = () => {
       const response = await fetch(
         `https://restcountries.com/v3.1/name/${country}`
       );
+
+      console.log({ response });
       if (!response.ok) {
         dispatch({ type: 'FETCH-UNSUCCESS' });
       }
