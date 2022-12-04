@@ -16,7 +16,7 @@ const Search = () => {
     <section className={classes['search-component__container']}>
       <InputSearch />
       <SearchStateCard>
-        {state?.enteredCountry !== '' && state?.isLoading && <Loading />}
+        { state?.isLoading && <Loading />}
         {state?.hasError && <ErrorMessage />}
         {state?.showCountry && !state?.isLoading && <CountryCard />}
       </SearchStateCard>
